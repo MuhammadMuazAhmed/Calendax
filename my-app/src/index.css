@@ -30,21 +30,28 @@ html.dark {
 
 
 @keyframes scroll-up {
-  from {
-    transform: translateY(0);
-  }
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
 
-  to {
-    transform: translateY(-50%);
-  }
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 .animate-scroll-up {
   animation: scroll-up 35s linear infinite;
 }
 
+.animate-scroll-up-h {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 25s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-scroll-up {
+  .animate-scroll-up,
+  .animate-scroll-up-h {
     animation: none;
   }
 }

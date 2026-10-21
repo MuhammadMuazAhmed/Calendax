@@ -5,7 +5,6 @@ export type HowItWorksFeature = {
   title: string;
   description: string;
   icon: ReactNode;
-  /** Icon tile color: blue, red or teal (matches the original design) */
   tone?: "blue" | "red" | "teal";
 };
 
@@ -13,7 +12,6 @@ export type HowItWorksProps = {
   eyebrow?: string;
   title?: string;
   description?: string;
-  /** Large image behind the cards. Leave empty to show a placeholder. */
   image?: { src: string; alt: string };
   features?: HowItWorksFeature[];
   className?: string;
@@ -54,22 +52,19 @@ const BotIcon = (
 const defaultFeatures: HowItWorksFeature[] = [
   {
     title: "AI Scheduler",
-    description:
-      "AI bot scans your calendar, offers notifications, & books discounted appointments to fill empty slots.",
+    description: "AI bot scans your calendar, offers notifications, & books discounted appointments to fill empty slots.",
     icon: CalendarIcon,
     tone: "blue",
   },
   {
     title: "Power Automation",
-    description:
-      "Maximize booking efficiency, improve customer engagement, & optimize revenue generation smoothly.",
+    description: "Maximize booking efficiency, improve customer engagement, & optimize revenue generation smoothly.",
     icon: BoltIcon,
     tone: "red",
   },
   {
     title: "AI-Driven Bookings",
-    description:
-      "Improve scheduling process, increase bookings & minimize revenue loss due to empty slots.",
+    description: "Improve scheduling process, increase bookings & minimize revenue loss due to empty slots.",
     icon: BotIcon,
     tone: "teal",
   },
@@ -77,13 +72,12 @@ const defaultFeatures: HowItWorksFeature[] = [
 
 const lightToneClasses = {
   blue: "bg-[#E8EFFF] text-[#3B82F6]",
-  red: "bg-[#FFEDEE] text-[#F0555A]",
+  red:  "bg-[#FFEDEE] text-[#F0555A]",
   teal: "bg-[#DFF7F8] text-[#17C3CE]",
 };
-
 const darkToneClasses = {
   blue: "bg-blue-900/40 text-blue-400",
-  red: "bg-red-900/40 text-red-400",
+  red:  "bg-red-900/40 text-red-400",
   teal: "bg-teal-900/40 text-teal-400",
 };
 
@@ -91,7 +85,7 @@ export default function HowItWorks({
   eyebrow = "How it works",
   title = "AI Powered System",
   description = "Our AI sends email & messages to your customers about the available time slots for bookings following the matching criteria.",
-  image= { src: "/assets/ai-powered-image.png", alt: "How it works" },
+  image = { src: "/assets/ai-powered-image.png", alt: "How it works" },
   features = defaultFeatures,
   className = "",
 }: HowItWorksProps) {
@@ -100,56 +94,74 @@ export default function HowItWorks({
 
   return (
     <section
+      id="ai-system"
       aria-labelledby="how-it-works-title"
-      className={`px-5 py-14 font-[Poppins,system-ui,sans-serif] md:px-10 md:py-[72px] lg:px-24 lg:py-24 transition-colors duration-300 ${
+      className={`px-4 py-12 font-[Poppins,system-ui,sans-serif] sm:px-8 sm:py-16 md:px-10 md:py-[60px] lg:px-16 lg:py-20 xl:px-24 xl:py-24 transition-colors duration-300 ${
         isDark ? "bg-[#0a0f20]" : "bg-[#F8FAFF]"
       } ${className}`}
     >
-      <div className="mx-auto flex max-w-[1248px] flex-col items-center gap-10">
-        <header className="max-w-[760px] text-center">
-          <p className={`text-base font-medium uppercase tracking-[0.12em] ${isDark ? "text-[#60a5fa]" : "text-[#0A8CFF]"}`}>
+      <div className="mx-auto flex max-w-[1248px] flex-col items-center gap-8 sm:gap-10">
+
+        {/* Header */}
+        <header className="w-full max-w-[760px] text-center">
+          <p className={`text-sm font-medium uppercase tracking-[0.12em] sm:text-base ${
+            isDark ? "text-[#60a5fa]" : "text-[#0A8CFF]"
+          }`}>
             {eyebrow}
           </p>
           <h2
             id="how-it-works-title"
-            className={`mb-3.5 mt-2 text-[34px] font-bold leading-[1.15] md:text-[42px] lg:text-[52px] ${isDark ? "text-white" : "text-[#0F1020]"}`}
+            className={`mb-3 mt-2 text-[28px] font-bold leading-[1.15] sm:text-[36px] md:text-[42px] lg:text-[48px] xl:text-[52px] ${
+              isDark ? "text-white" : "text-[#0F1020]"
+            }`}
           >
             {title}
           </h2>
-          <p className={`text-base leading-[1.6] lg:text-lg ${isDark ? "text-slate-400" : "text-[#3F4357]"}`}>{description}</p>
+          <p className={`text-sm leading-[1.65] sm:text-base lg:text-lg ${
+            isDark ? "text-slate-400" : "text-[#3F4357]"
+          }`}>
+            {description}
+          </p>
         </header>
 
+        {/* Image + Cards */}
         <div className="w-full">
+          {/* Banner image */}
           <div
-            role={image ? undefined : "img"}
-            aria-label={image ? undefined : "Image placeholder"}
-            className="h-[260px] w-full overflow-hidden rounded-3xl bg-[linear-gradient(160deg,#0E1015_0%,#2A2F3C_55%,#DDE2EE_100%)] md:h-[420px] md:rounded-[36px]"
+            className="relative h-[200px] w-full overflow-hidden rounded-2xl bg-[linear-gradient(160deg,#0E1015_0%,#2A2F3C_55%,#DDE2EE_100%)] sm:h-[280px] md:h-[360px] md:rounded-[36px] lg:h-[420px]"
           >
             {image && (
-              <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="h-full w-full object-cover"
+              />
             )}
           </div>
 
-          <ul className="relative -mt-12 mx-3 flex list-none flex-col gap-4 p-0 md:-mt-16 md:mx-6 md:flex-row lg:-mt-20 lg:mx-12 lg:gap-6">
+          {/* Feature cards — below image on mobile, overlapping on md+ */}
+          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-4 md:-mt-14 md:mx-4 lg:-mt-20 lg:mx-8 lg:gap-6 xl:mx-12">
             {features.map((f) => (
-              <li
+              <div
                 key={f.title}
-                className={`flex flex-1 flex-col gap-3.5 rounded-3xl p-[22px] lg:p-7 transition-colors duration-300 ${
+                className={`flex flex-col gap-3 rounded-2xl p-5 transition-colors duration-300 sm:rounded-3xl lg:p-7 ${
                   isDark
                     ? "bg-[#111827] shadow-[0_4px_24px_rgba(0,0,0,0.4)] border border-slate-700/50"
                     : "bg-white shadow-[0_4px_24px_rgba(20,30,80,0.07)]"
                 }`}
               >
-                <div
-                  className={`flex h-14 w-14 items-center justify-center rounded-2xl ${toneClasses[f.tone ?? "blue"]}`}
-                >
+                <div className={`flex h-12 w-12 items-center justify-center rounded-xl sm:h-14 sm:w-14 sm:rounded-2xl ${toneClasses[f.tone ?? "blue"]}`}>
                   {f.icon}
                 </div>
-                <h3 className={`text-[22px] font-semibold ${isDark ? "text-white" : "text-[#0F1020]"}`}>{f.title}</h3>
-                <p className={`text-base leading-[1.6] ${isDark ? "text-slate-400" : "text-[#3F4357]"}`}>{f.description}</p>
-              </li>
+                <h3 className={`text-[18px] font-semibold sm:text-[20px] lg:text-[22px] ${isDark ? "text-white" : "text-[#0F1020]"}`}>
+                  {f.title}
+                </h3>
+                <p className={`text-sm leading-[1.6] sm:text-base ${isDark ? "text-slate-400" : "text-[#3F4357]"}`}>
+                  {f.description}
+                </p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </section>
