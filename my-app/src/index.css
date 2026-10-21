@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+/* Tailwind v4: enable class-based dark mode */
+@variant dark (&:where(.dark, .dark *));
+
+
+/* ============================================================
+   Dark mode support — toggled via .dark class on <html>
+   ============================================================ */
+
+/* Light defaults (already baked into components, these are
+   used wherever we reference var(--*) tokens) */
+:root {
+  color-scheme: light;
+}
+
+/* Dark mode overrides applied via Tailwind's darkMode: 'class'
+   strategy — we flip specific backgrounds here so the page
+   sections that use bg-* classes also pick up the change. */
+html.dark {
+  color-scheme: dark;
+}
+
+/* Smooth transition when toggling */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+
+@keyframes scroll-up {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-scroll-up {
+  animation: scroll-up 35s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll-up {
+    animation: none;
+  }
+}
+
+
+
+/* Hide scrollbars across the entire website */
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Legacy Edge */
+}
+
+/* Chrome, Safari, Edge */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* ============================================================
+   Theme toggle button — sun/moon pill
+   ============================================================ */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a2e;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+html.dark .theme-toggle {
+  background: rgba(30,30,50,0.85);
+  border-color: rgba(255,255,255,0.12);
+  color: #e2e8f0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
