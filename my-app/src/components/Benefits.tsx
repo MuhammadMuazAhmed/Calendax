@@ -54,21 +54,31 @@ const Benefits: React.FC = () => {
           </p>
 
           {/* Benefit list */}
-          <div className="mt-5 space-y-2 sm:mt-7 sm:space-y-3">
-            {benefits.map((b) => (
-              <div key={b.title} className="flex items-center gap-3 rounded-2xl py-1 transition-transform duration-200 hover:translate-x-1 sm:gap-4 sm:py-1.5">
-                <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl sm:h-14 sm:w-14 sm:rounded-2xl ${
-                  isDark ? `${b.darkIconBg} ${b.darkIconColor}` : `${b.lightIconBg} ${b.lightIconColor}`
-                }`}>
-                  <span className="text-xl font-bold sm:text-2xl">{b.icon}</span>
-                </div>
-                <div>
-                  <h3 className={`text-sm font-semibold leading-5 sm:text-[15px] sm:leading-6 ${isDark ? "text-white" : "text-[#17213B]"}`}>{b.title}</h3>
-                  <p className={`mt-0.5 text-xs leading-5 sm:mt-1 sm:text-sm ${isDark ? "text-slate-500" : "text-[#8290AA]"}`}>{b.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* Benefit list: zigzag + bordered */}
+<div className="mt-5 flex flex-col gap-3 sm:mt-7 sm:gap-4">
+  {benefits.map((b, i) => (
+    <div
+      key={b.title}
+      className={`flex w-full items-center gap-3 rounded-2xl border p-3 transition-all duration-200 hover:-translate-y-0.5 sm:w-[calc(100%-2.5rem)] sm:gap-4 sm:p-4 lg:w-[calc(100%-4rem)] ${
+        i % 2 === 0 ? "sm:self-start" : "sm:self-end"
+      } ${
+        isDark
+          ? "border-slate-700/60 bg-slate-900/40 hover:border-blue-700"
+          : "border-[#DFE8FF] bg-white/80 shadow-[0_6px_20px_rgba(49,91,174,0.04)] hover:border-blue-300"
+      }`}
+    >
+      <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl sm:h-14 sm:w-14 sm:rounded-2xl ${
+        isDark ? `${b.darkIconBg} ${b.darkIconColor}` : `${b.lightIconBg} ${b.lightIconColor}`
+      }`}>
+        <span className="text-xl font-bold sm:text-2xl">{b.icon}</span>
+      </div>
+      <div>
+        <h3 className={`text-sm font-semibold leading-5 sm:text-[15px] sm:leading-6 ${isDark ? "text-white" : "text-[#17213B]"}`}>{b.title}</h3>
+        <p className={`mt-0.5 text-xs leading-5 sm:mt-1 sm:text-sm ${isDark ? "text-slate-500" : "text-[#8290AA]"}`}>{b.description}</p>
+      </div>
+    </div>
+  ))}
+</div>
 
           {/* CTA */}
           <a
