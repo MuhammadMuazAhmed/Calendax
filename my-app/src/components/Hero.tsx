@@ -68,7 +68,7 @@ const Hero = () => {
 
             <a
               href="#pricing-plan"
-              className={`inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl px-4 text-[15px] font-medium no-underline transition-colors sm:min-h-[56px] sm:w-auto sm:rounded-full sm:text-base lg:text-lg ${
+              className={`inline-flex min-h-[48px] w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl px-4 text-[15px] font-medium no-underline transition-colors sm:min-h-[56px] sm:w-auto sm:rounded-full sm:text-base lg:text-lg ${
                 isDark
                   ? "text-slate-200 hover:bg-slate-700/50"
                   : "text-[#191C26] hover:bg-gray-50"

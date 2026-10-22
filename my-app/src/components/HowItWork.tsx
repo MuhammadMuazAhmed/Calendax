@@ -128,7 +128,7 @@ export default function HowItWorks({
         <div className="w-full">
           {/* Banner image */}
           <div
-            className="relative h-[200px] w-full overflow-hidden rounded-2xl bg-[linear-gradient(160deg,#0E1015_0%,#2A2F3C_55%,#DDE2EE_100%)] sm:h-[280px] md:h-[360px] md:rounded-[36px] lg:h-[420px]"
+            className="h-[200px] w-full overflow-hidden rounded-2xl bg-[linear-gradient(160deg,#0E1015_0%,#2A2F3C_55%,#DDE2EE_100%)] sm:h-[280px] md:h-[360px] md:rounded-[36px] lg:h-[420px]"
           >
             {image && (
               <img
@@ -140,7 +140,7 @@ export default function HowItWorks({
           </div>
 
           {/* Feature cards — below image on mobile, overlapping on md+ */}
-          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-4 md:-mt-14 md:mx-4 lg:-mt-20 lg:mx-8 lg:gap-6 xl:mx-12">
+          <div className="relative z-10 mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-4 md:-mt-14 md:mx-4 lg:-mt-20 lg:mx-8 lg:gap-6 xl:mx-12">
             {features.map((f) => (
               <div
                 key={f.title}
