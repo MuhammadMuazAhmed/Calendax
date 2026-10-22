@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useTheme } from "../context/ThemeContext";
 
@@ -144,7 +143,7 @@ function PricingPlan() {
           return (
             <article
               key={plan.name}
-              className={`relative flex min-w-0 flex-col overflow-hidden rounded-[24px] border p-5 transition-all duration-300 hover:-translate-y-1 sm:rounded-[27px] sm:p-6 lg:p-7 ${
+              className={`relative isolate flex min-w-0 flex-col overflow-hidden rounded-[24px] border p-5 transition-all duration-300 hover:-translate-y-1 sm:rounded-[27px] sm:p-6 lg:p-7 ${
                 popular
                   ? "border-[#F0CA00] bg-[#FFD705] text-[#191C26] shadow-[0_20px_45px_rgba(240,202,0,0.25)] xl:scale-[1.02]"
                   : isDark
@@ -152,6 +151,14 @@ function PricingPlan() {
                     : "border-[#DFE8FF] bg-white/90 text-[#102750] shadow-[0_10px_35px_rgba(49,91,174,0.045)] backdrop-blur-sm hover:border-blue-200"
               }`}
             >
+              {/* Full-card diagonal tint in the Plexaar logo colours (red, yellow, green, blue) */}
+              <div
+                aria-hidden="true"
+                className={`pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(135deg,#F0393B_0%,#FFC800_34%,#22C55E_67%,#1E90FF_100%)] ${
+                  isDark ? "opacity-[0.18]" : "opacity-[0.13]"
+                }`}
+              />
+
               {popular && (
                 <>
                   <div aria-hidden="true" className="pointer-events-none absolute -right-8 top-14 h-28 w-20 rotate-45 rounded-full bg-white/10" />

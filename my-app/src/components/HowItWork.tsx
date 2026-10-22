@@ -139,8 +139,8 @@ export default function HowItWorks({
             )}
           </div>
 
-          {/* Feature cards — below image on mobile, overlapping on md+ */}
-          <div className="relative z-10 mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-4 md:-mt-14 md:mx-4 lg:-mt-20 lg:mx-8 lg:gap-6 xl:mx-12">
+          {/* Feature cards: below the image */}
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-4 md:mt-8 lg:gap-6">
             {features.map((f) => (
               <div
                 key={f.title}
